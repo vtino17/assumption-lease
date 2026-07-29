@@ -1,0 +1,11 @@
+{
+  "name": "@assumptionlease/cli",
+  "version": "0.1.0",
+  "description": "CLI for auditing assumption leases and transitive impact.",
+  "type": "module",
+  "bin": { "assumption-lease": "./dist/index.js" },
+  "main": "./dist/index.js",
+  "files": ["dist"],
+  "scripts": { "build": "tsc -p tsconfig.build.json" },
+  "dependencies": { "@assumptionlease/core": "workspace:*" }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@assumptionlease/core",
+  "version": "0.1.0",
+  "description": "Assumption lease and impact-graph engine.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsc -p tsconfig.build.json" }
+}

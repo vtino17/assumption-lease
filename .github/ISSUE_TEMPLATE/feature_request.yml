@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose a lease control, observation adapter, or graph feature.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: failure
+    attributes:
+      label: Stale-assumption failure
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed deterministic behavior
+    validations:
+      required: true
+  - type: textarea
+    id: trust
+    attributes:
+      label: Trust assumptions
+    validations:
+      required: true

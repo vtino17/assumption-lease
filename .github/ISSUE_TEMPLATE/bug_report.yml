@@ -1,0 +1,23 @@
+name: Bug report
+description: Report incorrect lease, graph, certificate, CLI, or Studio behavior.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Sanitized reproduction
+    validations:
+      required: true
