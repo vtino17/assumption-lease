@@ -34,11 +34,18 @@ export function validateLeaseDocument(value: unknown): ValidationIssue[] {
   if (!object(value.policy)) {
     issues.push({ path: "policy", message: "Policy is required." });
   } else {
-    if (typeof value.policy.maxObservationAgeMinutes !== "number" || value.policy.maxObservationAgeMinutes <= 0) {
+    if (
+      typeof value.policy.maxObservationAgeMinutes !== "number"
+      || !Number.isFinite(value.policy.maxObservationAgeMinutes)
+      || value.policy.maxObservationAgeMinutes <= 0
+    ) {
       issues.push({ path: "policy.maxObservationAgeMinutes", message: "Must be positive." });
     }
     const maxLeaseHours = value.policy.maxLeaseHours;
-    if (!object(maxLeaseHours) || !["low", "medium", "high", "critical"].every((key) => typeof maxLeaseHours[key] === "number" && (maxLeaseHours[key] as number) > 0)) {
+    if (!object(maxLeaseHours) || !["low", "medium", "high", "critical"].every((key) =>
+      typeof maxLeaseHours[key] === "number"
+      && Number.isFinite(maxLeaseHours[key])
+      && (maxLeaseHours[key] as number) > 0)) {
       issues.push({ path: "policy.maxLeaseHours", message: "Must define positive limits for every criticality." });
     }
     if (!Array.isArray(value.policy.evidenceRequiredAt) || !value.policy.evidenceRequiredAt.every((entry) => criticalities.has(entry as Criticality))) {
