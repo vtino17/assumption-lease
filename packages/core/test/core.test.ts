@@ -143,4 +143,24 @@ describe("validation", () => {
     expect(paths).toContain("assumptions");
     expect(paths).toContain("policy.maxObservationAgeMinutes");
   });
+
+  it.each([Number.NaN, Number.POSITIVE_INFINITY])(
+    "rejects non-finite observation age limits (%s)",
+    (maxObservationAgeMinutes) => {
+      const document = createSoundLease(now);
+      document.policy.maxObservationAgeMinutes = maxObservationAgeMinutes;
+      expect(validateLeaseDocument(document).map((entry) => entry.path))
+        .toContain("policy.maxObservationAgeMinutes");
+    },
+  );
+
+  it.each([Number.NaN, Number.POSITIVE_INFINITY])(
+    "rejects non-finite lease duration limits (%s)",
+    (critical) => {
+      const document = createSoundLease(now);
+      document.policy.maxLeaseHours.critical = critical;
+      expect(validateLeaseDocument(document).map((entry) => entry.path))
+        .toContain("policy.maxLeaseHours");
+    },
+  );
 });
