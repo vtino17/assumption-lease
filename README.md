@@ -13,8 +13,8 @@ Long-running agents reuse plans, summaries, and intermediate artifacts across ho
 AssumptionLease changes the unit of reuse:
 
 ```text
-"We made this decision"              ← historical fact
-"Its premises are still leased"      ← current permission to reuse
+"We made this decision"              (historical fact)
+"Its premises are still leased"      (current permission to reuse)
 ```
 
 ## Core controls
